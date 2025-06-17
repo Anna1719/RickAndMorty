@@ -1,10 +1,13 @@
+export type CharacterStatus = 'alive' | 'dead' | 'unknown' | '';
+export type CharacterGender = 'female' | 'male' | 'genderless' | 'unknown' | '';
+
 export interface Character {
   id: number;
   name: string;
-  status: string;
+  status: CharacterStatus;
   species: string;
   type: string;
-  gender: string;
+  gender: CharacterGender;
   origin: {
     name: string;
     url: string;
@@ -17,6 +20,15 @@ export interface Character {
   episode: string[];
   url: string;
   created: string;
+}
+
+export interface CharacterFilter {
+  name?: string;
+  status?: CharacterStatus;
+  species?: string;
+  type?: string;
+  gender?: CharacterGender;
+  page?: number;
 }
 
 export interface SearchResult {

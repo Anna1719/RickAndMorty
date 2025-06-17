@@ -1,28 +1,28 @@
 import { useQuery } from "@tanstack/react-query";
-import { SearchResult } from "@/utils/types";
-import api from "./axiosInstance";
+import { CharacterFilter, SearchResult } from "@/utils/types";
+import api from "../api/axiosInstance";
 
 export const fetchResults = async (
-  query?: string,
-  page: number = 1
+  filters: CharacterFilter
 ): Promise<SearchResult> => {
   const params = new URLSearchParams();
-  if (page > 1) params.set("page", page.toString());
-  if (query) params.set("name", query);
-
-  const queryString = params.toString();
-  const url = `/api/character${queryString ? `?${queryString}` : ''}`;
   
-  const { data } = await api.get<SearchResult>(url);
+  if (filters.name) params.set('name', filters.name);
+  if (filters.status) params.set('status', filters.status);
+  if (filters.species) params.set('species', filters.species);
+  if (filters.type) params.set('type', filters.type);
+  if (filters.gender) params.set('gender', filters.gender);
+  if (filters.page && filters.page > 1) params.set('page', filters.page.toString());
+
+  const { data } = await api.get<SearchResult>(`/api/character?${params.toString()}`);
   return data;
 };
 
-export const useSearchResults = (query?: string, page: number = 1) => {
+export const useSearchResults = (filters: CharacterFilter) => {
   return useQuery<SearchResult>({
-    queryKey: ["characters", query || 'all', page],
-    queryFn: () => fetchResults(query, page),
+    queryKey: ['characters', filters],
+    queryFn: () => fetchResults(filters),
     staleTime: 30000,
-    retry: false,
-    enabled: query ? query.length > 3 : true
+    retry: false
   });
 };

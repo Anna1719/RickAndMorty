@@ -13,36 +13,8 @@
 
   &:hover {
     transform: scale(1.02);
-    border: 1px solid var(--viridian);
+    border: 1px solid var(--orange);
     box-shadow: 0 6px 10px var(--shadow);
-  }
-
-  &:nth-child(1) {
-    grid-column: span 6;
-
-    @media (max-width: 1520px) {
-      grid-column: span 4;
-    }
-
-    @media (max-width: 1200px) {
-      grid-column: span 6;
-    }
-  }
-
-  &:nth-child(2) {
-    grid-column: span 6;
-
-    @media (max-width: 1520px) {
-      grid-column: span 4;
-    }
-
-    @media (max-width: 1200px) {
-      grid-column: span 6;
-    }
-  }
-
-  @media (max-width: 1200px) {
-    grid-column: span 6;
   }
 }
 
@@ -88,7 +60,7 @@
 }
 
 .characteristics__Item {
-  color: var(--viridian);
+  color: var(--orange);
   font-weight: 600;
 }
 

@@ -17,14 +17,12 @@
 .foundText {
   width: 100%;
   max-width: 626px;
-  &__number {
-    font-family: "Montserrat", serif;
-    text-align: left;
-    font-size: 16px;
-    margin: 0 0 20px 20px;
+  font-family: "Montserrat", serif;
+  text-align: center;
+  font-size: 22px;
+  margin: auto;
 
-    @media (max-width: 510px) {
-      font-size: 14px;
-    }
+  @media (max-width: 768px) {
+    font-size: 16px;
   }
 }

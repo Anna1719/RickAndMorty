@@ -6,7 +6,7 @@ import { AxiosError } from "axios";
 
 export const CharacterPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams<{ id: string | undefined }>();
+  const { id } = useParams<{ id: string }>();
   const { data, isLoading, error } = useCharacter(id);
 
   const createdDate = data?.created
@@ -36,9 +36,10 @@ export const CharacterPage = () => {
         <p>Location: {data?.location.name}</p>
         <p>Created: {createdDate}</p>
       </div>
-      <button onClick={() => navigate(-1)} className={styles.buttonBack}>
-        Back
-      </button>
+      <button
+        onClick={() => navigate(-1)}
+        className={styles.buttonBack}
+      >Back</button>
     </div>
   );
 };

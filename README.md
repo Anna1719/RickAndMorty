@@ -32,7 +32,7 @@ The project is created with:
    - Users can enter a character's name in the search field.
    - The input automatically focuses on page load for better user experience.
 2. **Real-time API Search**
-   - After typing 3 or more characters, a request is sent to fetch matching results.
+   - After typing 3 or more characters and pressing "search"/ enter, a request is sent to fetch matching results.
    - Results are displayed on the same page as a list of cards.
 3. **Navigation to Details Page**
    - Clicking on any card leads to a detailed view using the URL provided by the API.
@@ -42,8 +42,8 @@ The project is created with:
 To run this project, download and install it locally using npm:
 
 ```
-$ git clone https://github.com/Anna1719/search-page.git
-$ cd ./search-page
+$ git clone https://github.com/Anna1719/RickAndMorty.git
+$ cd ./RickAndMorty
 $ npm install
 $ npm start
 ```
