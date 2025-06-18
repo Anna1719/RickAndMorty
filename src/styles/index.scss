@@ -1,0 +1,16 @@
+@use "./normalize.scss";
+@use "./_constants.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Fira Sans", serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
