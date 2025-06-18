@@ -12,6 +12,7 @@ import {
   CharacterStatus,
 } from "@/utils/types";
 import { SearchFilters } from "@/components/searchFilter";
+import { DEFAULT_VALUES } from "@/utils/defaultFilterValues";
 
 export const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -33,15 +34,7 @@ export const SearchPage = () => {
   };
 
   const handleReset = () => {
-    const defaultValues = {
-      name: "",
-      status: null,
-      species: "",
-      type: "",
-      gender: null,
-      page: 1,
-    };
-    setFilters(defaultValues);
+    setFilters(DEFAULT_VALUES);
     setSearchParams({});
   };
 

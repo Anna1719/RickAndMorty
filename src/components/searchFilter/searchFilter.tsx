@@ -43,6 +43,7 @@ export const SearchFilters = ({
   const [gender, setGender] = useState<Nullable<CharacterGender>>(
     initialFilter?.gender || null
   );
+  const [showAdvanced, setShowAdvanced] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,6 +65,10 @@ export const SearchFilters = ({
     onReset();
   };
 
+  const toggleAdvanced = () => {
+    setShowAdvanced(!showAdvanced);
+  };
+
   const renderSelectOptions = (options: { value: string; label: string }[]) =>
     options.map((option) => (
       <option key={option.value} value={option.value}>
@@ -73,83 +78,96 @@ export const SearchFilters = ({
 
   return (
     <form onSubmit={handleSubmit} className={styles.filtersForm}>
-      <div className={styles.filterName}>
-        <label htmlFor="name-input" className={styles.filterLabel}>
-          Name:
-        </label>
-        <input
-          id="name-input"
-          className={styles.filterField}
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Enter character name"
-        />
-      </div>
-
-      <div className={styles.filterContainer}>
-        <label htmlFor="status-select" className={styles.filterLabel}>
-          Status:
-        </label>
-        <select
-          id="status-select"
-          className={styles.filterField}
-          value={status || ""}
-          onChange={(e) =>
-            setStatus(
-              e.target.value ? (e.target.value as CharacterStatus) : null
-            )
-          }
+      <div className={styles.mainSearch}>
+        <div className={styles.nameContainer}>
+          <label htmlFor="name-input" className={styles.filterLabel}>
+            Name:
+          </label>
+          <input
+            id="name-input"
+            className={styles.filterField}
+            type="search"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter character name"
+          />
+        </div>
+        <button
+          type="button"
+          className={styles.toggleButton}
+          onClick={toggleAdvanced}
         >
-          {renderSelectOptions(SELECT_OPTIONS.status)}
-        </select>
+          {showAdvanced ? "Hide Filters" : "Show Filters"}
+        </button>
       </div>
 
-      <div className={styles.filterContainer}>
-        <label htmlFor="species-input" className={styles.filterLabel}>
-          Species:
-        </label>
-        <input
-          id="species-input"
-          className={styles.filterField}
-          type="text"
-          value={species}
-          onChange={(e) => setSpecies(e.target.value)}
-          placeholder="Human, Alien, etc."
-        />
-      </div>
+      {showAdvanced && (
+        <div className={styles.advancedFilters}>
+          <div className={styles.filterContainer}>
+            <label htmlFor="status-select" className={styles.filterLabel}>
+              Status:
+            </label>
+            <select
+              id="status-select"
+              className={styles.filterField}
+              value={status || ""}
+              onChange={(e) =>
+                setStatus(
+                  e.target.value ? (e.target.value as CharacterStatus) : null
+                )
+              }
+            >
+              {renderSelectOptions(SELECT_OPTIONS.status)}
+            </select>
+          </div>
 
-      <div className={styles.filterContainer}>
-        <label htmlFor="type-input" className={styles.filterLabel}>
-          Type:
-        </label>
-        <input
-          id="type-input"
-          className={styles.filterField}
-          type="text"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          placeholder="Specific character type"
-        />
-      </div>
+          <div className={styles.filterContainer}>
+            <label htmlFor="species-input" className={styles.filterLabel}>
+              Species:
+            </label>
+            <input
+              id="species-input"
+              className={styles.filterField}
+              type="search"
+              value={species}
+              onChange={(e) => setSpecies(e.target.value)}
+              placeholder="Human, Alien, etc."
+            />
+          </div>
 
-      <div className={styles.filterContainer}>
-        <label htmlFor="gender-select" className={styles.filterLabel}>
-          Gender:
-        </label>
-        <select
-          id="gender-select"
-          className={styles.filterField}
-          value={gender || ""}
-          onChange={(e) =>
-            setGender(
-              e.target.value ? (e.target.value as CharacterGender) : null
-            )
-          }
-        >
-          {renderSelectOptions(SELECT_OPTIONS.gender)}
-        </select>
-      </div>
+          <div className={styles.filterContainer}>
+            <label htmlFor="type-input" className={styles.filterLabel}>
+              Type:
+            </label>
+            <input
+              id="type-input"
+              className={styles.filterField}
+              type="search"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              placeholder="Specific character type"
+            />
+          </div>
+
+          <div className={styles.filterContainer}>
+            <label htmlFor="gender-select" className={styles.filterLabel}>
+              Gender:
+            </label>
+            <select
+              id="gender-select"
+              className={styles.filterField}
+              value={gender || ""}
+              onChange={(e) =>
+                setGender(
+                  e.target.value ? (e.target.value as CharacterGender) : null
+                )
+              }
+            >
+              {renderSelectOptions(SELECT_OPTIONS.gender)}
+            </select>
+          </div>
+        </div>
+      )}
 
       <div className={styles.buttons}>
         <button type="submit" className={styles.buttonsSearch}>

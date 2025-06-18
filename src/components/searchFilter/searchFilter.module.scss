@@ -7,44 +7,69 @@
   padding: 16px;
 }
 
-.filterName {
-  width: calc(100% - 10px);
+.mainSearch {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
 
-  @media (min-width: 768px) {
-    width: calc(200% - 20px);
+.nameContainer {
+  width: 100%;
+}
+
+.toggleButton {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--orange);
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--focus-color);
   }
+}
+
+.advancedFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
 }
 
 .filterContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   width: 100%;
 }
 
 .filterLabel {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   color: var(--orange);
 }
 
 .filterField {
   width: 100%;
-  padding: 16px 20px;
+  padding: 14px 16px;
   border: 2px solid transparent;
   border-radius: 4px;
-  font-size: 26px;
-  box-shadow: 0px 7px 25px 0px var(--shadow);
+  font-size: 18px;
+  box-shadow: 0px 4px 15px 0px var(--shadow);
   transition: border-color 0.2s;
 
   &:focus {
     outline: none;
-    border: 2px solid var(--orange);
+    border-color: var(--orange);
   }
 
   &::placeholder {
     color: var(--orange);
-    font-weight: 600;
     opacity: 0.7;
   }
 }
@@ -53,7 +78,6 @@
   display: flex;
   gap: 16px;
   width: 100%;
-  margin-top: 10px;
 }
 
 .buttonsSearch,
@@ -61,10 +85,9 @@
   flex: 1;
   padding: 16px;
   border-radius: 4px;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0px 7px 25px 0px var(--shadow);
   transition: all 0.2s;
   text-align: center;
 
@@ -90,8 +113,18 @@
 
   &:hover {
     background-color: var(--focus-color);
-    border: 2px solid var(--focus-color);
     color: var(--white);
+    border-color: var(--focus-color);
+  }
+}
+
+@media (min-width: 769px) {
+  .advancedFilters {
+    gap: 20px 10px;
+  }
+
+  .filterContainer {
+    width: calc(50% - 5px);
   }
 }
 
@@ -101,38 +134,12 @@
     gap: 16px;
   }
 
-  .filterLabel {
-    font-size: 20px;
-  }
-
-  .filterField {
-    padding: 14px 16px;
-    font-size: 20px;
+  .toggleButton {
+    font-size: 18px;
+    padding: 10px;
   }
 
   .buttons {
     flex-direction: column;
-    gap: 12px;
-  }
-
-  .buttonsSearch,
-  .buttonsReset {
-    padding: 14px;
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 769px) {
-  .filtersForm {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .filterContainer {
-    width: calc(50% - 10px);
-  }
-
-  .buttons {
-    flex-basis: 100%;
   }
 }
