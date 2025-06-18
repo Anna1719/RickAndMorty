@@ -33,15 +33,15 @@ export const SearchPage = () => {
   };
 
   const handleReset = () => {
-    const resetFilters = {
+    const defaultValues = {
       name: "",
-      status: undefined,
+      status: null,
       species: "",
       type: "",
-      gender: undefined,
+      gender: null,
       page: 1,
     };
-    setFilters(resetFilters);
+    setFilters(defaultValues);
     setSearchParams({});
   };
 

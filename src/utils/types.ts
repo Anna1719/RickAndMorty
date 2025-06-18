@@ -1,5 +1,7 @@
-export type CharacterStatus = 'alive' | 'dead' | 'unknown' | '';
-export type CharacterGender = 'female' | 'male' | 'genderless' | 'unknown' | '';
+export type Nullable<T> = T | null;
+
+export type CharacterStatus = 'alive' | 'dead' | 'unknown';
+export type CharacterGender = 'female' | 'male' | 'genderless' | 'unknown';
 
 export interface Character {
   id: number;
@@ -24,10 +26,10 @@ export interface Character {
 
 export interface CharacterFilter {
   name?: string;
-  status?: CharacterStatus;
+  status: Nullable<CharacterStatus>;
   species?: string;
   type?: string;
-  gender?: CharacterGender;
+  gender: Nullable<CharacterGender>;
   page?: number;
 }
 
